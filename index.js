@@ -3,10 +3,11 @@
 const axios = require('axios')
 const _ = require('lodash')
 const nodemailer = require('nodemailer')
-const logger = require('pino')()
+const Pino = require('pino')
 const debug = require('debug')('vaccine')
 const fs = require('fs')
 
+const logger = Pino({timestamp:Pino.stdTimeFunctions.isoTime})
 const stdin = process.stdin
 stdin.setEncoding('utf8')
 
