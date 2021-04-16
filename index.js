@@ -22,6 +22,7 @@ const EMAIL_TO = _.get(process, 'env.EMAIL_TO', SMTP_USER)
 function run(){
   debug(`SMTP_USER: ${SMTP_USER}`)
   debug(`SMTP_PASS: ${SMTP_PASS}`)
+  debug(`EMAIL_TO: ${EMAIL_TO}`)
   let dataStr = ''
   stdin.on('data', (chunk)=> dataStr += chunk)
   stdin.on('end', ()=>{
