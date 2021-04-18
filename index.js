@@ -27,9 +27,14 @@ function run(){
   let dataStr = ''
   stdin.on('data', (chunk)=> dataStr += chunk)
   stdin.on('end', ()=>{
-	  const stateStr = fs.readFileSync('./data/state.json')
-	  const state = JSON.parse(stateStr)
-	  debug({stateStr, state})
+	  let state
+	  try{
+	  	const stateStr = fs.readFileSync('./data/state.json')
+	        state = JSON.parse(stateStr)
+	  	debug({stateStr, state})
+	  }catch(err){
+		  state = {}
+	  }
     const parsed = JSON.parse(dataStr)
     const currentTimeStr = _.get(parsed, 'responsePayloadData.currentTime')
    const currentTime = Date.parse(currentTimeStr)
